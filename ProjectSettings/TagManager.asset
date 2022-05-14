@@ -11,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Wall
+  - Player
+  - Sound
+  - Enemy
+  - EnemyGroundCollider
   - 
   - 
   - 
