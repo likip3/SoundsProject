@@ -3,9 +3,11 @@ using UnityEngine;
 public class VibrationCircle : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    public Color color;
     void Start()
     {
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
+        spriteRenderer.color = color;
     }
     void FixedUpdate()
     {

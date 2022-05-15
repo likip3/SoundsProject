@@ -14,8 +14,8 @@ public class FreeWalkState : StateMachineBehaviour
     {
         flipFactor = animator.GetInteger("flipFactor");
         var origin = animator.transform.position + new Vector3(1 * flipFactor, 4);
-        Debug.DrawRay(origin,
-            4 * flipFactor * animator.transform.right, Color.red);
+        //Debug.DrawRay(origin,
+        //    4 * flipFactor * animator.transform.right, Color.red);
         RaycastHit2D hit = Physics2D.Raycast(origin,
             animator.transform.right * flipFactor,
             4, 1 << 6);

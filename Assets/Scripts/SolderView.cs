@@ -63,9 +63,9 @@ public class SolderView : MonoBehaviour
 
         for (var i = 0; i <= rayCount; i++)
         {
-            Debug.DrawRay(startPoint.position,
-                animator.GetInteger("flipFactor") * viewDistance * GetVectorFromAngle(angle),
-                Color.cyan);
+            //Debug.DrawRay(startPoint.position,
+            //    animator.GetInteger("flipFactor") * viewDistance * GetVectorFromAngle(angle),
+            //    Color.cyan);
 
             RaycastHit2D raycastHit2D = Physics2D.Raycast(startPoint.position,
                 GetVectorFromAngle(angle) * animator.GetInteger("flipFactor"),
