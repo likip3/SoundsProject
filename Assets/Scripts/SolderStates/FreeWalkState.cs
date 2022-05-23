@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class FreeWalkState : StateMachineBehaviour
 {
-    public float punch;
     public int flipFactor;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -13,7 +12,7 @@ public class FreeWalkState : StateMachineBehaviour
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         flipFactor = animator.GetInteger("flipFactor");
-        var origin = animator.transform.position + new Vector3(1 * flipFactor, 4);
+        var origin = animator.transform.position + new Vector3(flipFactor, 4);
         //Debug.DrawRay(origin,
         //    4 * flipFactor * animator.transform.right, Color.red);
         RaycastHit2D hit = Physics2D.Raycast(origin,

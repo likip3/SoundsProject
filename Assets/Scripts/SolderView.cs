@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SolderView : MonoBehaviour
 {
@@ -10,10 +11,15 @@ public class SolderView : MonoBehaviour
     public float fov;
     public float viewDistance;
     public Vector2 lastKnownPoint;
+    [SerializeField] private GameObject weapon;
+
     [SerializeField] private Transform aimPoint;
 
     private int tempCooldown;
     [SerializeField] private int Cooldown;
+    public int shootCooldown;
+
+    public Transform[] ventPoints;
 
 
     private Animator animator;
@@ -30,6 +36,23 @@ public class SolderView : MonoBehaviour
         RayCastVision();
         AimFlip();
         ChangeMovementBehaviourMode();
+        ShootingSystem();
+    }
+
+    private void ShootingSystem()
+    {
+        if (shootCooldown>0)
+        {
+            aimPoint.transform.position = lastKnownPoint;
+            weapon.GetComponent<WeaponRifle>().isShoot = true;
+        }
+        else
+        {
+            weapon.GetComponent<WeaponRifle>().isShoot = false;
+
+        }
+
+        shootCooldown--;
     }
 
     private void ChangeMovementBehaviourMode()
@@ -56,7 +79,7 @@ public class SolderView : MonoBehaviour
 
     private void RayCastVision()
     {
-        int rayCount = 20;
+        int rayCount = 40;
         float angle = fov / 2;
         float angleIncrease = fov / rayCount;
 
@@ -64,11 +87,11 @@ public class SolderView : MonoBehaviour
         for (var i = 0; i <= rayCount; i++)
         {
             //Debug.DrawRay(startPoint.position,
-            //    animator.GetInteger("flipFactor") * viewDistance * GetVectorFromAngle(angle),
+            //    animator.GetInteger("flipFactor") * (startPoint.rotation * Quaternion.Euler(0,0,-70 * animator.GetInteger("flipFactor")) * (viewDistance * GetVectorFromAngle(angle))),
             //    Color.cyan);
 
             RaycastHit2D raycastHit2D = Physics2D.Raycast(startPoint.position,
-                GetVectorFromAngle(angle) * animator.GetInteger("flipFactor"),
+                animator.GetInteger("flipFactor") * (startPoint.rotation * Quaternion.Euler(0, 0, -70 * animator.GetInteger("flipFactor")) * GetVectorFromAngle(angle)),
                 viewDistance,
                 layerMask);
             if (raycastHit2D && raycastHit2D.collider.CompareTag("Player"))
@@ -76,6 +99,7 @@ public class SolderView : MonoBehaviour
                 lastKnownPoint = raycastHit2D.point;
                 if (animator.GetInteger("triggered") == 0)
                     animator.SetInteger("triggered", 1);
+                shootCooldown = 80;
             }
             angle -= angleIncrease;
         }

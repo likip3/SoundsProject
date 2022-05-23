@@ -137,6 +137,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   lifePunches: 5
+  waveObjectType: 1
+  type: 0
 --- !u!96 &318763073926557191
 TrailRenderer:
   serializedVersion: 2

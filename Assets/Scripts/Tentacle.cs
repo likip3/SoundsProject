@@ -5,7 +5,6 @@ using UnityEngine;
 public class Tentacle : MonoBehaviour
 {
     public Camera mainCamera;
-    public GameObject soundWave;
 
     public float raycastDistance;
     public float vectorRotation;
@@ -25,11 +24,16 @@ public class Tentacle : MonoBehaviour
         _springJoint.enabled = false;
     }
 
-    public void OnCollisionExit2D(Collision2D col)
+    public void OnCollisionEnter2D(Collision2D col)
     {
         //Debug.Log(Math.Abs(_rigidbody.velocity.y));
         if (vibrate && Math.Abs(_rigidbody.velocity.y)>1.5)
-            Instantiate(soundWave, transform.position, new Quaternion(0, 0, 0, 0));
+        {
+            var soundInstance = SoundParticlePool.Instance.GetObject(SoundParticlePool.ObjectInfo.ObjectType.SoundWave);
+            soundInstance.GetComponent<VibrationCircle>().OnCreate(transform.position, Color.white);
+
+        }
+
     }
 
     public void Update()

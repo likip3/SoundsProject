@@ -14,18 +14,42 @@ public class SoundsSystem : MonoBehaviour
     private bool canShoot = true;
     private float tempCooldown;
 
+    [SerializeField] private SoundParticlePool.ObjectInfo.ObjectType parObjectType;
+
+
+
+    void Start()
+    {
+        //var seed = (int)(Random.value * 43567835467356);
+        //Random.InitState(seed);
+        //PlayerPrefs.SetInt("seed", seed);
+        ////Debug.Log(Random.value);
+    }
     void Update()
     {
+
+
+
+
+
+
         //Debug.Log(createPoint.GetComponentInChildren(typeof(createPoint)));
         if (Input.GetKeyDown(KeyCode.Space) && canShoot)
         {
             var spawnPos = mainCamera.ScreenToWorldPoint(Input.mousePosition) - createPoint.position;
-            float angle = attackAngel / 2;
+            var angle = attackAngel / 2f;
             float angleIncrease = attackAngel / particleCount;
             for (var i = 0; i <= particleCount; i++)
             {
-                var soundInstance = Instantiate(soundParticle, createPoint.position, Quaternion.Euler(0, 0, (Mathf.Atan2(spawnPos.y, spawnPos.x) * Mathf.Rad2Deg) + angle));
-                soundInstance.GetComponent<Rigidbody2D>().AddForce(soundInstance.transform.right / 10);
+                var soundInstance = SoundParticlePool.Instance.GetObject(parObjectType);
+                soundInstance.GetComponent<SpawnVibro>().OnCreate(createPoint.position,
+                    Quaternion.Euler(0, 0, (Mathf.Atan2(spawnPos.y, spawnPos.x) * Mathf.Rad2Deg) + angle), 1);
+
+
+
+                //var soundInstance = Instantiate(soundParticle, createPoint.position,
+                //    Quaternion.Euler(0, 0, (Mathf.Atan2(spawnPos.y, spawnPos.x) * Mathf.Rad2Deg) + angle));
+                //soundInstance.GetComponent<Rigidbody2D>().AddForce(soundInstance.transform.right / 10);
 
                 angle -= angleIncrease;
             }

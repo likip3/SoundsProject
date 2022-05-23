@@ -1,15 +1,19 @@
 using UnityEngine;
 
-public class VibrationCircle : MonoBehaviour
+public class VibrationCircle : MonoBehaviour , IPooledObject
 {
     private SpriteRenderer spriteRenderer;
-    public Color color;
-    void Start()
+
+    public SoundParticlePool.ObjectInfo.ObjectType Type => type;
+    [SerializeField]
+    private SoundParticlePool.ObjectInfo.ObjectType type;
+
+    private void Start()
     {
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
-        spriteRenderer.color = color;
     }
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         transform.localScale += new Vector3(1, 1) / 600;
 
@@ -18,6 +22,19 @@ public class VibrationCircle : MonoBehaviour
         spriteRenderer.color = tmp;
 
         if (tmp.a <= 0)
-            Destroy(transform.gameObject);
+            SoundParticlePool.Instance.DestroyObject(gameObject);
     }
+
+    public void OnCreate(Vector3 position, Color color)
+    {
+        OnCreate(position, color,1);
+    }
+    public void OnCreate(Vector3 position, Color color,float startScale)
+    {
+        transform.position = position;
+        GetComponent<SpriteRenderer>().color = color;
+        transform.localScale = new Vector3(startScale * 0.097f, startScale * 0.097f);
+    }
+
+
 }
