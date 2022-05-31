@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7316749660706402274}
   - component: {fileID: 23874262627458908}
   - component: {fileID: 318763073926557191}
+  - component: {fileID: -9048558495549622761}
   m_Layer: 8
   m_Name: SoundPar
   m_TagString: Untagged
@@ -246,3 +247,15 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-9048558495549622761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7316749660706402276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b0e01e05223d4c41a18a2282c8ea953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -46,7 +46,7 @@ ScriptedImporter:
     flipbookRows: 0
     flipbookColumns: 0
     ignorePngGamma: 0
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -98,7 +98,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 380
+      x: 4
       y: 4
       width: 460
       height: 383
@@ -550,7 +550,7 @@ ScriptedImporter:
     - {x: 0, y: 32}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 374, y: 4}
+    uvTransform: {x: -2, y: 4}
   - name: "\u0421\u043B\u043E\u0439 2"
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -559,7 +559,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
+      y: 395
       width: 368
       height: 499
     spriteID: 530562155ef754b40a278fc57f0f9ff1
@@ -1095,7 +1095,7 @@ ScriptedImporter:
     - {x: 37, y: 0}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -40, y: -147}
+    uvTransform: {x: -55, y: 244}
   - name: "\u0421\u043B\u043E\u0439 1"
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1103,8 +1103,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 511
+      x: 472
+      y: 4
       width: 161
       height: 372
     spriteID: 82815cf3ec9eeec488a05eba8d60a50e
@@ -2527,8 +2527,41 @@ ScriptedImporter:
     - {x: 132, y: 4}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -152, y: 96}
-  platformSettings: []
+    uvTransform: {x: 316, y: -411}
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
@@ -2553,21 +2586,21 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: cdf6ba44eda75ad478046930a20bac07
     layerID: 5
-    mosaicPosition: {x: 380, y: 4}
+    mosaicPosition: {x: 4, y: 4}
   - name: "\u0421\u043B\u043E\u0439 2"
     spriteName: "\u0421\u043B\u043E\u0439 2"
     isGroup: 0
     parentIndex: -1
     spriteID: 530562155ef754b40a278fc57f0f9ff1
     layerID: 4
-    mosaicPosition: {x: 4, y: 4}
+    mosaicPosition: {x: 4, y: 395}
   - name: "\u0421\u043B\u043E\u0439 1"
     spriteName: "\u0421\u043B\u043E\u0439 1"
     isGroup: 0
     parentIndex: -1
     spriteID: 82815cf3ec9eeec488a05eba8d60a50e
     layerID: 2
-    mosaicPosition: {x: 4, y: 511}
+    mosaicPosition: {x: 472, y: 4}
   characterData:
     bones:
     - name: bone_1

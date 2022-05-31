@@ -1,43 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class HealthSystem : MonoBehaviour
 {
+    public float damageReduce;
+    public float health;
     public Image image;
+    public bool immortal;
+    public bool isDead = false;
     public float maxHealth;
     public float regeneration;
-    public float health;
-    public bool immortal;
 
-    void Start()
+    private void Start()
     {
         health = maxHealth;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        //Debug.Log(tempHealth);
-
-        //if (Input.GetKeyDown(KeyCode.P))
-        //{
-        //    GetHit(100, new Vector2());
-        //}
-
+        if (GetComponentInParent<HealthSystem>().isDead) return;
         if (health < maxHealth)
         {
             image.color = new Color(image.color.r, image.color.g, image.color.b, (float)(1 - health / maxHealth - 0.3));
             health += regeneration;
         }
-
     }
 
     public void GetHit(float damage)
     {
         if (immortal) return;
-        health -= damage;
+        health -= damage / damageReduce;
         image.color = new Color(image.color.r, image.color.g, image.color.b, (float)(1 - health / maxHealth - 0.3));
+        if (health <= 0)
+        {
+            var temp = GetComponentsInChildren<HingeJoint2D>();
+            foreach (var joint2D in temp)
+                joint2D.useLimits = false;
+
+            isDead = true;
+        }
     }
 }

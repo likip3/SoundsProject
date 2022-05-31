@@ -5,24 +5,6 @@ using UnityEngine.Animations;
 
 public class AutoCannonScript : MonoBehaviour
 {
-    #region Values
-
-    private Animator animator;
-    public float fov;
-    public LayerMask layerMask;
-
-    public Transform startPoint;
-    public float viewDistance;
-    public Color bulletHoleColor;
-    [SerializeField] private Transform shootPointLeft;
-    [SerializeField] private Transform shootPointRight;
-    [SerializeField] private Transform AimPoint;
-    private AimConstraint aimConstraint;
-    private AudioSource audioSource;
-    [SerializeField] private AudioClip clip;
-
-    #endregion
-
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -32,11 +14,14 @@ public class AutoCannonScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (disabled)
+        {
+            animator.enabled = false;
+            return;
+        }
+
         CannonView();
         RotateCannon();
-        //Debug.Log(180 * startPoint.localRotation.z / 1.447780531062502);
-        //Debug.Log(startPoint.rotation.z);
-
     }
 
     private void RotateCannon()
@@ -49,6 +34,7 @@ public class AutoCannonScript : MonoBehaviour
                     new Vector3(0, 0, (float)(180 * startPoint.localRotation.z / 1.447780531062502));
                 aimConstraint.constraintActive = true;
             }
+
             aimConstraint.weight += 0.04f;
         }
         else if (aimConstraint.constraintActive)
@@ -58,7 +44,6 @@ public class AutoCannonScript : MonoBehaviour
             if (aimConstraint.weight <= 0)
                 aimConstraint.constraintActive = false;
         }
-
     }
 
     private void CannonView()
@@ -76,10 +61,6 @@ public class AutoCannonScript : MonoBehaviour
 
         for (var i = 0; i <= rayCount; i++)
         {
-            //Debug.DrawRay(startPoint.position,
-            //    startPoint.rotation * (viewDistance * GetVectorFromAngle(angle)),
-            //    Color.cyan);
-
             var raycastHit2D = Physics2D.Raycast(startPoint.position,
                 startPoint.rotation * GetVectorFromAngle(angle),
                 viewDistance,
@@ -96,7 +77,7 @@ public class AutoCannonScript : MonoBehaviour
                     AimPoint.position = tempHit2D.point;
                 else
                     AimPoint.position = raycastHit2D.point;
-                //Debug.Log(enemyPosition);
+
 
                 break;
             }
@@ -117,7 +98,12 @@ public class AutoCannonScript : MonoBehaviour
         RayShoot(shootPointLeft);
         RayShoot(shootPointRight);
         audioSource.PlayOneShot(clip);
+        var soundInstance = SoundParticlePool.Instance.GetObject(SoundParticlePool.ObjectInfo.ObjectType.SoundWave);
+        soundInstance.GetComponent<VibrationCircle>().OnCreate(shootPointLeft.position, Color.yellow, 1, 45, 2);
 
+
+        var soundInstanceà = SoundParticlePool.Instance.GetObject(SoundParticlePool.ObjectInfo.ObjectType.SoundWave);
+        soundInstanceà.GetComponent<VibrationCircle>().OnCreate(shootPointRight.position, Color.yellow, 1, 45, 2);
     }
 
     private void RayShoot(Transform shootPoint)
@@ -135,4 +121,24 @@ public class AutoCannonScript : MonoBehaviour
                 shoot.collider.GetComponentInParent<HealthSystem>().GetHit(300);
         }
     }
+
+    #region Values
+
+    private Animator animator;
+    public float fov;
+    public LayerMask layerMask;
+
+    public Transform startPoint;
+    public float viewDistance;
+    public Color bulletHoleColor;
+    [SerializeField] private Transform shootPointLeft;
+    [SerializeField] private Transform shootPointRight;
+    [SerializeField] private Transform AimPoint;
+    private AimConstraint aimConstraint;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip clip;
+
+    public bool disabled;
+
+    #endregion
 }

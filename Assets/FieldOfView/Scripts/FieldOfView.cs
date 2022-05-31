@@ -1,16 +1,13 @@
-﻿
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
+    private float fov;
 
     [SerializeField] private LayerMask layerMask;
-    private float fov;
-    private float viewDistance;
     private Vector3 origin;
     private float startingAngle;
+    private float viewDistance;
 
     private void Start()
     {
@@ -21,24 +18,20 @@ public class FieldOfView : MonoBehaviour
 
     private void LateUpdate()
     {
-        int rayCount = 50;
-        float angle = startingAngle;
-        float angleIncrease = fov / rayCount;
+        var rayCount = 50;
+        var angle = startingAngle;
+        var angleIncrease = fov / rayCount;
 
 
-        for (int i = 0; i <= rayCount; i++)
+        for (var i = 0; i <= rayCount; i++)
         {
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewDistance, layerMask);
+            var raycastHit2D = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewDistance, layerMask);
             if (raycastHit2D.collider == null)
             {
-
             }
 
             angle -= angleIncrease;
         }
-
-
-
     }
 
     public static Vector3 GetVectorFromAngle(float angle)

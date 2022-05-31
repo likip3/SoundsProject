@@ -86,11 +86,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   raycastDistance: 20
+  rehookDistanse: 3
+  tentacleStrength: 1
   vectorRotation: 7
   vibrate: 1
-  rehookDistanse: 3
 --- !u!231 &711142727802723762
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -329,11 +329,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   raycastDistance: 20
+  rehookDistanse: 3
+  tentacleStrength: 1
   vectorRotation: -7
   vibrate: 1
-  rehookDistanse: 3
 --- !u!231 &711142727936840661
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -592,11 +592,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   raycastDistance: 20
+  rehookDistanse: 3
+  tentacleStrength: 1
   vectorRotation: 3
   vibrate: 1
-  rehookDistanse: 3
 --- !u!231 &711142728167697772
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -884,11 +884,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   raycastDistance: 20
+  rehookDistanse: 3
+  tentacleStrength: 1
   vectorRotation: 9
   vibrate: 1
-  rehookDistanse: 3
 --- !u!231 &711142728390844481
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -1126,11 +1126,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   raycastDistance: 20
+  rehookDistanse: 3
+  tentacleStrength: 1
   vectorRotation: -8
   vibrate: 1
-  rehookDistanse: 3
 --- !u!231 &711142728595016896
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -1295,7 +1295,6 @@ GameObject:
   - component: {fileID: 711142728697230276}
   - component: {fileID: 711142728697230299}
   - component: {fileID: 711142728697230296}
-  - component: {fileID: 711142728697230297}
   m_Layer: 7
   m_Name: monster_final 1
   m_TagString: Untagged
@@ -1433,6 +1432,10 @@ MonoBehaviour:
   particleCount: 5
   attackAngel: 90
   cooldown: 0.5
+  particleSpeed: 1
+  damage: 100
+  lifePunches: 5
+  parObjectType: 0
 --- !u!114 &711142728697230296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1445,17 +1448,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e584ee7729868c47b4bded037cff756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageReduce: 0
+  health: 0
   image: {fileID: 0}
+  immortal: 0
+  isDead: 0
   maxHealth: 1000
   regeneration: 1
---- !u!81 &711142728697230297
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711142728697230279}
-  m_Enabled: 1
 --- !u!1 &711142728788627520
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,11 +1541,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   raycastDistance: 20
+  rehookDistanse: 3
+  tentacleStrength: 1
   vectorRotation: 8
   vibrate: 1
-  rehookDistanse: 3
 --- !u!231 &711142728788627546
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -1784,11 +1783,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   raycastDistance: 20
+  rehookDistanse: 3
+  tentacleStrength: 1
   vectorRotation: -6
   vibrate: 1
-  rehookDistanse: 3
 --- !u!231 &711142728802474441
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -2026,11 +2025,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   raycastDistance: 20
+  rehookDistanse: 3
+  tentacleStrength: 1
   vectorRotation: -3
   vibrate: 1
-  rehookDistanse: 3
 --- !u!231 &711142728887208844
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -2268,11 +2267,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   raycastDistance: 20
+  rehookDistanse: 3
+  tentacleStrength: 1
   vectorRotation: 10
   vibrate: 1
-  rehookDistanse: 3
 --- !u!231 &711142729092294735
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -2439,6 +2438,7 @@ GameObject:
   - component: {fileID: 711142729368321558}
   - component: {fileID: 711142729368321554}
   - component: {fileID: 711142729368321553}
+  - component: {fileID: 1751935052}
   m_Layer: 7
   m_Name: bone_1
   m_TagString: Player
@@ -2511,11 +2511,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   raycastDistance: 20
+  rehookDistanse: 3
+  tentacleStrength: 1
   vectorRotation: 0
   vibrate: 1
-  rehookDistanse: 3
 --- !u!231 &711142729368321558
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -2667,6 +2667,14 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!81 &1751935052
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711142729368321564}
+  m_Enabled: 1
 --- !u!1 &711142729391529849
 GameObject:
   m_ObjectHideFlags: 0
@@ -2754,11 +2762,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   raycastDistance: 20
+  rehookDistanse: 3
+  tentacleStrength: 1
   vectorRotation: 0
   vibrate: 1
-  rehookDistanse: 3
 --- !u!231 &711142729391529840
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -3016,11 +3024,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   raycastDistance: 20
+  rehookDistanse: 3
+  tentacleStrength: 1
   vectorRotation: 5
   vibrate: 1
-  rehookDistanse: 3
 --- !u!231 &711142729466020414
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -3258,11 +3266,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   raycastDistance: 20
+  rehookDistanse: 3
+  tentacleStrength: 1
   vectorRotation: -5
   vibrate: 1
-  rehookDistanse: 3
 --- !u!231 &711142729470211324
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -3500,11 +3508,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  soundWave: {fileID: 8201357346264765300, guid: 763ff6b4e43a65c4399f07099eb17987, type: 3}
   raycastDistance: 20
+  rehookDistanse: 3
+  tentacleStrength: 1
   vectorRotation: -10
   vibrate: 1
-  rehookDistanse: 3
 --- !u!231 &711142729753119268
 SpringJoint2D:
   m_ObjectHideFlags: 0

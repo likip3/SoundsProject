@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class VibrationCircle : MonoBehaviour , IPooledObject
+public class VibrationCircle : MonoBehaviour, IPooledObject
 {
+    private float alphaSpeed;
+
+    private float increaseScaleSpeed;
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField] private SoundParticlePool.ObjectInfo.ObjectType type;
+
     public SoundParticlePool.ObjectInfo.ObjectType Type => type;
-    [SerializeField]
-    private SoundParticlePool.ObjectInfo.ObjectType type;
 
     private void Start()
     {
@@ -15,10 +18,10 @@ public class VibrationCircle : MonoBehaviour , IPooledObject
 
     private void FixedUpdate()
     {
-        transform.localScale += new Vector3(1, 1) / 600;
+        transform.localScale += new Vector3(increaseScaleSpeed, increaseScaleSpeed) / 600;
 
         var tmp = spriteRenderer.color;
-        tmp.a -= (float)0.02;
+        tmp.a -= 0.02f * alphaSpeed;
         spriteRenderer.color = tmp;
 
         if (tmp.a <= 0)
@@ -27,14 +30,15 @@ public class VibrationCircle : MonoBehaviour , IPooledObject
 
     public void OnCreate(Vector3 position, Color color)
     {
-        OnCreate(position, color,1);
+        OnCreate(position, color, 1, 1, 1);
     }
-    public void OnCreate(Vector3 position, Color color,float startScale)
+
+    public void OnCreate(Vector3 position, Color color, float startScale, float scaleSpeed, float fadeSpeed)
     {
         transform.position = position;
         GetComponent<SpriteRenderer>().color = color;
         transform.localScale = new Vector3(startScale * 0.097f, startScale * 0.097f);
+        increaseScaleSpeed = scaleSpeed;
+        alphaSpeed = fadeSpeed;
     }
-
-
 }
