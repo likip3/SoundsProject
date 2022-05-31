@@ -31,7 +31,7 @@ public class RoomDoor : MonoBehaviour
             _camera.transform.Translate(0, 0, -10);
             _camera.orthographicSize = camScaleLeft;
             col.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1000, 0));
-            if (SettingsTab.renderRooms) return;
+            if (SettingsTab.renderRooms || simple) return;
             camPosLeft.parent.gameObject.SetActive(true);
             camPosRight.parent.gameObject.SetActive(false);
         }
@@ -41,7 +41,7 @@ public class RoomDoor : MonoBehaviour
             _camera.transform.Translate(0, 0, -10);
             _camera.orthographicSize = camScaleRight;
             col.GetComponent<Rigidbody2D>().AddForce(new Vector2(1000, 0));
-            if (SettingsTab.renderRooms) return;
+            if (SettingsTab.renderRooms || simple) return;
             camPosRight.parent.gameObject.SetActive(true);
             camPosLeft.parent.gameObject.SetActive(false);
         }

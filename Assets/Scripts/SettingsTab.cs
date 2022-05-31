@@ -26,6 +26,7 @@ public class SettingsTab : MonoBehaviour
         if (!DoneReset.activeInHierarchy)
             DoneReset.SetActive(true);
         PlayerPrefs.DeleteAll();
+        Application.Quit();
     }
 
     public void CloseSure()
