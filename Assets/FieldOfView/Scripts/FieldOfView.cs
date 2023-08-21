@@ -37,6 +37,15 @@ public class FieldOfView : MonoBehaviour
     public static Vector3 GetVectorFromAngle(float angle)
     {
         var angleRag = angle * (Mathf.PI / 180f);
-        return new Vector3(Mathf.Cos(angleRag), Mathf.Sign(angleRag));
+        return new Vector3(Mathf.Cos(angleRag), Mathf.Sin(angleRag));
     }
+
+    public static Vector3 GetAngleFromVector(Vector3 dir)
+    {
+        float n = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
+        if (n<0) n += 360;
+
+        return n;
+    }
+
 }
